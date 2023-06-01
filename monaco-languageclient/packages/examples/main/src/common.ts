@@ -55,10 +55,13 @@ export const createWebSocket = (url: string): WebSocket => {
 };
 
 export const createDefaultJsonContent = (): string => {
-    return `{
-    "$schema": "http://json.schemastore.org/coffeelint",
-    "line_endings": "unix"
-}`;
+    return `#include "sys.h"
+
+
+int main() {
+
+}
+`;
 };
 
 export const createJsonEditor = async (config: {
