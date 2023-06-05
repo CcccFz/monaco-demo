@@ -17,7 +17,7 @@ export const createLanguageClient = (transports: MessageTransports): MonacoLangu
         clientOptions: {
             // use a language id as a document selector
             // documentSelector: ['typescript'],
-            documentSelector: ['cpp'],
+            documentSelector: ['c'],
             // disable the default error handler
             errorHandler: {
                 error: () => ({ action: ErrorAction.Continue }),
@@ -69,7 +69,7 @@ export const createJsonEditor = async (config: {
     content: string,
     init: boolean
 }) => {
-    const languageId = 'cpp';
+    const languageId = 'c';
 
     if (config.init === true) {
         await initServices({
@@ -84,12 +84,12 @@ export const createJsonEditor = async (config: {
 
     languages.register({
         id: languageId,
-        extensions: ['.c', '.cpp', '.cc', '.h', '.hpp'],
-        aliases: ['c','C','cc','cpp','CPP']
+        extensions: ['.c', '.cc', '.h', '.hpp'],
+        aliases: ['c','C','cc']
     });
 
     // create the model
-    const uri = Uri.parse('/tmp/model.cpp');
+    const uri = Uri.parse('/tmp/model.c');
     const modelRef = await createModelReference(uri, config.content);
     modelRef.object.setLanguageId(languageId);
 
