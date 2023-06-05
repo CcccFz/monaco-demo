@@ -6,6 +6,7 @@ https://github.com/wylieconlon/jsonrpc-ws-proxy
 apt install -y clangd-12 bear
 update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-12 100
 bear make PREFIX=/opt/lab/tool-chain/gcc-arm-none-eabi/bin/arm-none-eabi- -C .
+bear make PREFIX=/opt/lab/tool-chain/Xuantie-900-gcc-elf/bin/riscv64-unknown-elf- -C .
 clangd --compile-commands-dir 1112
 
 node dist/server.js --port 50051 --languageServers servers.yml
