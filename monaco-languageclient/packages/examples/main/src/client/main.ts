@@ -17,7 +17,7 @@ const start = async () => {
     });
 
     // create the web socket
-    const url = createUrl('192.168.110.100', 80, '/ws/coder?user_id=2');
+    const url = createUrl('192.168.110.100', 80, '/ws/coder?user_id=2&chip_id=risc_v');
     createWebSocket(url);
 };
 

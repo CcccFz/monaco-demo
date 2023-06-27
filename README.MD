@@ -10,3 +10,24 @@ bear make PREFIX=/opt/lab/tool-chain/Xuantie-900-gcc-elf/bin/riscv64-unknown-elf
 clangd --compile-commands-dir 1112
 
 node dist/server.js --port 50051 --languageServers servers.yml
+
+mm32f5270:
+    # Generate dependency information                                                                                                                  
+    #CFLAGS += -fno-common \                                                                                                                           
+    -ffunction-sections\                                                                                                                               
+    -fdata-sections\                                                                                                                                   
+    -ffreestanding\                                                                                                                                    
+    -fno-builtin\                                                                                                                                      
+    -mapcs\                                                                                                                                            
+    -mapcs\                                                                                                                                            
+    -fno-exceptions\                                                                                                                                   
+    -MMD -MP -MF"$(@:%.o=%.d)" -Wimplicit-int
+
+    CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"  
+
+riscv:
+    -mtune=e906 -march=rv32imaxtheade
+    -mtune=sifive-e31 -march=rv32ima
+
+stm32:
+    -I/opt/lab/tool-chain/gcc-arm-none-eabi/arm-none-eabi/include \
