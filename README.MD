@@ -26,8 +26,11 @@ mm32f5270:
     CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"  
 
 riscv:
+    <!-- generic-rv32, rocket-rv32, sifive-7-rv32, sifive-e31, sifive-e76, generic, rocket, sifive-7-series -->
     -mtune=e906 -march=rv32imaxtheade
-    -mtune=sifive-e31 -march=rv32ima
+    -mtune=generic-rv32 -march=rv32ima
+    CompileFlags:
+      Add: [-I/opt/lab/tool-chain/gcc-arm-none-eabi/arm-none-eabi/include, -mtune=generic-rv32]
 
 stm32:
     -I/opt/lab/tool-chain/gcc-arm-none-eabi/arm-none-eabi/include \
